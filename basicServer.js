@@ -4,9 +4,9 @@ var fs = require('fs');
 //var writeStream = fs.createWriteStream('stream.txt');
 
 http.createServer((req, res) => {
-	res.writeHead(200, {'Content-Type' : 'text/plain'});
+	res.writeHead(200, {'Content-Type' : 'text/html'});
 	
-	var readStream = fs.createReadStream('text.txt', 'utf8');
+	var readStream = fs.createReadStream('html.txt');
 	//IF THE STREAM IS TOO BIG THEN IT GOES FOR 
 	//DOWNLOAD IN FORM OF TXT FILE
 	readStream.pipe(res);
