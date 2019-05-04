@@ -1,17 +1,23 @@
 var http = require('http');
 var fs = require('fs');
 
-var stream = fs.createReadStream('file.txt');
-stream.setEncoding('utf8');
+var readStream = fs.createReadStream('file.txt');
+readStream.setEncoding('utf8');
+
+var writeStream = fs.createWriteStream('stream.txt');
+
 var data = '';
 
-stream.on('data', (str) => {
+readStream.on('data', (str) => {
 	 console.log('-------------------------');
-	 console.log(str);
-	 data += str;
+	 //console.log(str);
+	 //data += str;
+	 writeStream.write(str);
+	 writeStream.write('-------------------');
+
 });
 
-stream.on('end', () => {
+readStream.on('end', () => {
 	console.log('----------End_----------');
 	//console.log(data);
 });
