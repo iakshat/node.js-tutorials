@@ -2,15 +2,7 @@ var express = require('express');
 
 var app = express();
 
-//GET
-//POST
-//PUT
-//DELETE
-
-//FOR THIS METHOD 
-//  /Home == /home == /HoMe
-
-//SENDS 404 ON NOT DEFINED
+app.set('view engine', 'ejs');
 
 var priceList = {
     1 : 50,
@@ -18,20 +10,15 @@ var priceList = {
     3 : 80
 };
 
-app.get('/', (req, rep) => {
-    rep.send('Home Page');
-})
-
 app.get('/home', (req, rep) => {
     rep.sendFile(__dirname + '/home.html');   //*
 })
 
-app.get('/about', (req, rep) => {
-    rep.send('About Us');
-})
-
 app.get('/data/:id', (req, rep) => {
-    rep.send('Data for id : ' + req.params.id + '\n Cost of item : ' + priceList[req.params.id]);
+    //rep.send('Data for id : ' + req.params.id + '\n Cost of item : ' + priceList[req.params.id]);
+
+    rep.render('output', { price : priceList[req.params.id], id : req.params.id});
+
 })
 
 app.listen(2000, () => {
