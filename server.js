@@ -12,16 +12,26 @@ var app = express();
 
 //SENDS 404 ON NOT DEFINED
 
-app.get('/', (req, res) => {
-    res.send('Home Page');
+var priceList = {
+    1 : 50,
+    2 : 100,
+    3 : 80
+};
+
+app.get('/', (req, rep) => {
+    rep.send('Home Page');
 })
 
-app.get('/home', (req, res) => {
-    res.send('Home Page');
+app.get('/home', (req, rep) => {
+    rep.send('Home Page');
 })
 
-app.get('/about', (req, res) => {
-    res.send('About Us');
+app.get('/about', (req, rep) => {
+    rep.send('About Us');
+})
+
+app.get('/data/:id', (req, rep) => {
+    rep.send('Data for id : ' + req.params.id + '\n Cost of item : ' + priceList[req.params.id]);
 })
 
 app.listen(2000, () => {
