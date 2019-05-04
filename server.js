@@ -23,7 +23,7 @@ app.get('/', (req, rep) => {
 })
 
 app.get('/home', (req, rep) => {
-    rep.send('Home Page');
+    rep.sendFile(__dirname + '/home.html');   //*
 })
 
 app.get('/about', (req, rep) => {
