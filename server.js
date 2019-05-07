@@ -17,6 +17,7 @@ app.get('/home', (req, rep) => {
 app.get('/data/:id', (req, rep) => {
     //rep.send('Data for id : ' + req.params.id + '\n Cost of item : ' + priceList[req.params.id]);
 
+    //MAKE FOLDER NAMED 'views' AND MAKE EJS FILE NAMED 'output'
     rep.render('output', { price : priceList[req.params.id], id : req.params.id});
 
 })
