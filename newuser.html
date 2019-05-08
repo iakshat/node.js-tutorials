@@ -1,0 +1,108 @@
+<html>
+<title>
+    New User
+</title>
+
+<body>
+
+    <script type="text/javascript">
+        function available(boolValue) {
+
+            var req = new XMLHttpRequest();
+
+            var username = document.getElementById('username').value;
+            console.log(username);
+
+            req.onreadystatechange = () => {
+                if (req.readyState === 4 && req.status === 200) {
+                    if (req.responseText === 'Valid') {
+                        document.getElementById('testUsername').innerHTML = "Hurray!!! username is available!";
+                    } else if(req.responseText === 'Invalid') {
+                        document.getElementById('testUsername').innerHTML = "Sorry username already taken ;(";
+                        document.getElementById('username').innerHTML = "";
+                    }
+                }
+            }
+
+            var data = {
+                'postId': 1,
+                'username': username
+            }
+
+            req.open('POST', '/newuser', boolValue);
+            //req.writeHead(200, {'Content-Type' : 'application/json'});
+            req.setRequestHeader('Content-Type', 'application/json');
+            req.send(JSON.stringify(data));
+        }
+
+        function submit() {
+            available(false);
+
+            console.log('here');
+
+            if (document.getElementById('password').value != document.getElementById('passsword').value) {
+                document.getElementById('password').innerHTML = "";
+                document.getElementById('passsword').innerHTML = "";
+                document.getElementById('checkPassword').innerHTML = "Passwords don't match :(";
+            }
+
+            var user = {
+                'postId': 2,
+                'first': document.getElementById("first").value,
+                'last': document.getElementById('last').value,
+                'username': document.getElementById('username').value,
+                'password': document.getElementById('password').value,
+                'email': document.getElementById('email').value,
+            }
+
+            var req = new XMLHttpRequest();
+
+            req.onreadystatechange = () => {
+                if (req.readyState === 4 && req.status === 200) {
+                    if (req.responseText === 'user added') {
+                        document.getElementById('finalcall').innerHTML = "New User Added";
+                    } else {
+                        document.getElementById('finalcall').innerHTML = "User registration failed ;-(";
+                    }
+                }
+            }
+
+            req.open('POST', '/newuser', true);
+            req.setRequestHeader('Content-Type', 'application/json');
+            req.send(JSON.stringify(user));
+        }
+
+    </script>
+
+    <h3>New User Registration</h3>
+    <br /><br /><br />
+    <h5>First Name: </h5>
+    <input type='text' id='first'>
+
+    <h5>Last Name: </h5>
+    <input type='text' id='last'>
+
+    <h5>Username for this App: </h5>
+    <input type='text' id='username'>
+
+    <button type="button" onclick="available(true)">Check for availability</button>
+    <div id="testUsername"> </div>
+    <br><br>
+
+
+    <h5>Password: </h5>
+    <input type='password' id='password'>
+
+    <h5>Confirm Password: </h5>
+    <input type='password' id='passsword'>
+
+    <h5>Email Id: </h5>
+    <input type='text' id='email'>
+
+    <br /><br />
+
+    <button type='button' onclick='submit()'>Submit</button>
+    <div id='finalcall'> </div>
+</body>
+
+</html>
