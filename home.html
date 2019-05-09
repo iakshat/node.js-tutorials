@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <title>Home Page</title>
+    <meta name="keywords" content="AKSHAT">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .body {
+            background-color: #1f1f1f;
+        }
+
+        .header {
+            background-color: whitesmoke;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .topnav {
+            background-color: #333;
+            float: left;
+            width: 100%
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: left;
+            padding: 15px 16px;
+        }
+
+        .topnav a:hover {
+            background-color: whitesmoke;
+            color: black;
+            text-decoration: blink;
+        }
+
+        .column {
+            float: left
+        }
+
+        .column.left {
+            float: left;
+            width: 24%;
+            background-color: whitesmoke;
+            margin-right: 1%;
+
+        }
+
+        .column.left a {
+            color: #1f1f1f;
+            padding: 10px 20px;
+            display: block
+        }
+
+        .column.left a:hover {
+            color: whitesmoke;
+            background-color: #1f1f1f;
+        }
+
+        .column.centre {
+            float: left;
+            width: 48%;
+            background-color: whitesmoke;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+        .column.right {
+            float: left;
+            width: 24%;
+            background-color: whitesmoke;
+            margin-left: 1%;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .footer {
+            background-color: #333;
+            padding: 20px;
+            color: black;
+            margin-top: 20px;
+
+        }
+
+        @media screen and (max-width : 800px) {
+
+            .column.centre,
+            .column.left,
+            .column.right {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Site Name</h1>
+    </div>
+    <div class="topnav">
+        <a herf="">Home</a>
+        <a href="" style="float: right;">Sign In</a>
+        <a href="" style="float: right;">Sign Up</a>
+    </div>
+
+    <div class="row">
+        <div class="column left">
+            <a href="">ksdfm</a>
+            <a href="">ksdfm</a>
+            <a href="">ksdfm</a>
+            <a href="">ksdfm</a>
+        </div>
+
+        <div class="column centre">
+            <div class="card" style="width: 100%;">
+                <h3>This is the first card</h3>
+                <p>this is a test html created to test the working of css website layout</p>
+            </div>
+            <div class="card" style="width: 100%;">
+                <h3>This is the second card</h3>
+                <p>this is kfdnh ckjahf asjcas jndjsa cjsaj dnhsa jndjsa
+                    kmdsckcmd cmsnad snmcj nsdjcn skjdcn sjkdcsajkmnc
+                    kmdcmas cjsmdcj asnmckdcsandm
+                </p>
+            </div>
+        </div>
+
+        <div class="column right">
+            <div class="card" style="width:80%;">
+                <h4 style="text-align:centre;">To Do: </h4>
+                <ul>
+                    <li>PS</li>
+                    <li>Angular</li>
+                    <li>Vue</li>
+                    <li>oss</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <h5 style="text-align:right;color:whitesmoke">Site By:</h5>
+        <h6 style="text-align:right;color:whitesmoke">akshat</h6>
+    </div>
+
+
+</body>
+
+</html>
