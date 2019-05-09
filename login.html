@@ -1,0 +1,92 @@
+<html>
+<title>
+    App
+</title>
+
+<head>
+    
+    <script type="text/javascript">
+        function authenticate() {
+            var username = document.getElementById("username");
+            var password = document.getElementById("password");
+
+            console.log('input: ' + username.value);
+
+            var dataToSend = {
+                "username": username.value,
+                "password": password.value
+            };
+
+            var request = new XMLHttpRequest();
+
+            request.onreadystatechange = () => {
+
+                if (request.readyState == 4 && request.status == 200) {
+                    if (request.response === 'not a user') {
+                        //console.log('caught ya!!');
+                        document.getElementById('message').innerHTML = "Invalid Id please try again or signup";
+                    }else if (request.response === 'invalid password'){
+                        document.getElementById('message').innerHTML = "Invalid Password please try again";
+                    }else{
+                        document.getElementById('message').innerHTML = "User Verified";
+                        location.replace("http://localhost:2000/news");
+                        //proceed(username.value);
+                        //res.sendFile('home.html');
+                    }
+                }
+
+            };
+
+            request.open('POST', '/login', false);
+            request.setRequestHeader("Content-Type", "application/json");
+            //console.log(dataToSend);
+
+
+            request.send(JSON.stringify(dataToSend));
+
+            //console.log(request.readyState);
+
+        }    
+
+        function enter(event){
+            if(event.which === 13){
+                authenticate();
+            }
+        }
+
+        // function proceed(username) {
+        //     var request = new XMLHttpRequest();
+        //     console.log(username);
+        //     request.open('GET', "/country/"+username, true);
+        //     request.send();
+
+        //     request.onreadystatechange = () => {
+        //         if(request.readyState === 4 && request.status === 200){
+        //             var country = request.responseText;
+        //             location.replace("http://localhost:2000/news" + country);                    
+        //         }
+        //     }
+        // }
+    </script>
+</head>
+
+<body>
+    <h1>Login Form</h1>
+
+    <br />
+    <br />
+    <br />
+    <h3>Username: </h3>
+    <input type='text' id='username'>
+    <br />
+    <h3>Password: </h3>
+    <input type='password' id='password' onkeypress="enter(event)">
+    <br /><br />
+    <button type='button' id='submit' onclick="authenticate()">Login</button>
+    <br/><br/><br/>
+
+    <div id='message'> </div>
+
+</body>
+
+</html>
